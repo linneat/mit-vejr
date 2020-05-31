@@ -2,21 +2,61 @@ import React, { Component } from "react";
 import "./WeatherInfo.css";
 
 export default class WeatherInfo extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      city: this.props.city,
+      dataFromApi: undefined,
+    };
+  }
+
+  componentDidMount() {
+    const key = process.env.REACT_APP_WEATHER_API_KEY;
+    var url =
+      "http://api.openweathermap.org/data/2.5/weather?q=" +
+      this.state.city +
+      "&appid=" +
+      key +
+      "&units=metric";
+    console.log(url);
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          dataFromApi: data,
+        });
+      });
+  }
+
   render() {
-    return (
-      <div className="wrap">
-          <h2 className="localWeatherTitle">Weather in {this.props.city}:</h2>
-        <div className="info">
-          <div className="temp">avg: {this.props.avgTemp}</div>
-          <div className="temp">min: {this.props.minTemp}</div>
-          <div className="temp">max: {this.props.maxTemp}</div>
-          <div className="temp">feels like: {this.props.feelsLike}</div>
+    if (this.state.dataFromApi === undefined) {
+      return <div>didnt fetch yet</div>;
+    } else {
+      return (
+        <div className="wrap">
+          <h2 className="localWeatherTitle">Weather in {this.state.city}:</h2>
+          <div className="info">
+            <div className="temp">
+              min: {this.state.dataFromApi.main.temp_min}
+            </div>
+            <div className="temp">
+              max: {this.state.dataFromApi.main.temp_max}
+            </div>
+            <div className="temp">
+              feels like: {this.state.dataFromApi.main.feels_like}
+            </div>
+          </div>
+          <div className="info">
+            <div className="cityClass">
+              {this.state.dataFromApi.weather[0].description} in{" "}
+              {this.state.city} today.
+            </div>
+            <div className="description">{this.props.description}</div>
+          </div>
         </div>
-        <div className="info">
-          <div className="cityClass">{this.props.city}</div>
-          <div className="description">{this.props.description}</div>
-        </div>
-      </div>
-    );
+      );
+    }
   }
 }
