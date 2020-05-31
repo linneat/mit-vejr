@@ -13,10 +13,15 @@
   margin: 5%;
 }
 
-.city{
+.cityClass{
   margin: 2%;
 }
 
 .description{
   margin: 2%;
+}
+
+.localWeatherTitle{
+  display: flex;
+  justify-content: center;
 }
