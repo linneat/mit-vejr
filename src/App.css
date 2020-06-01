@@ -25,3 +25,8 @@
   display: flex;
   justify-content: center;
 }
+
+.inputLabel{
+  display: flex;
+  flex-direction: row;
+}

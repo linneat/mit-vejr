@@ -1,15 +1,11 @@
 import React from "react";
 import "./App.css";
-import WeatherInfo from "./WeatherInfo";
+import Home from "./Home";
 
 function App() {
   return (
     <div className="appWrap">
-      <h1 className="heading">
-        Compare weather in your city and anywhere else!
-      </h1>
-      <WeatherInfo city="Vanløse" />
-      <WeatherInfo city="Barcelona" />
+      <Home/>
     </div>
   );
 }
