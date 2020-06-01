@@ -65,6 +65,11 @@ export default class Home extends Component {
         ) : (
           <div></div>
         )}
+        {(this.state.inputCity1 === "" || this.state.inputCity2 ==="") && this.state.showWeather ? (
+            <div>Please enter both cities</div>
+        ) : (
+            <div></div>
+        )}
       </div>
     );
   }

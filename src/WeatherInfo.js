@@ -35,7 +35,7 @@ export default class WeatherInfo extends Component {
     ) {
       return <div>{this.state.dataFromApi.message}. Selected city: {this.state.city}</div>;
     } else if (this.state.dataFromApi === undefined) {
-      return <div>Loading...</div>;
+      return <div>Loading {this.state.city}...</div>;
     } else {
       return (
         <div className="wrap">
