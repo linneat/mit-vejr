@@ -21,83 +21,51 @@ export default class Home extends Component {
   }
 
   handleChangeCity1(event) {
-    this.setState({ inputCity1: event.target.value });
+    this.setState({ inputCity1: event.target.value, showWeather: false });
   }
 
   handleChangeCity2(event) {
-    this.setState({ inputCity2: event.target.value });
+    this.setState({ inputCity2: event.target.value, showWeather: false });
   }
 
   render() {
-    if (this.state.showWeather) {
-      return (
-        <div className="appWrap">
-          <h1 className="heading">
-            Compare weather in your city and anywhere else!
-          </h1>
-          <label className="inputLabel">
-            Enter first city name:
-            <input
-              type="text"
-              name="nameCity1"
-              placeholder="Enter a city"
-              value={this.state.inputCity1}
-              onChange={this.handleChangeCity1}
-            />
-          </label>
-          <label>
-            Enter second city name:
-            <input
-              type="text"
-              name="nameCity2"
-              placeholder="Enter a city"
-              value={this.state.inputCity2}
-              onChange={this.handleChangeCity2}
-            />
-          </label>
-          <button onClick={this.findWeather}>
-            Find weather for both cities
-          </button>
-          <WeatherInfo city={this.state.inputCity1} />
-          <WeatherInfo city={this.state.inputCity2} />
-        </div>
-      );
-    } else if (
-      this.state.inputCity1 === "" ||
-      this.state.inputCity2 === "" ||
-      !this.state.showWeather
-    ) {
-      return (
-        <div className="appWrap">
-          <h1 className="heading">
-            Compare weather in your city and anywhere else!
-          </h1>
-
-          <label className="inputLabel">
-            Enter first city name:
-            <input
-              type="text"
-              name="nameCity1"
-              placeholder="Enter a city"
-              value={this.state.inputCity1}
-              onChange={this.handleChangeCity1}
-            />
-          </label>
-          <label>
-            Enter second city name:
-            <input
-              type="text"
-              name="nameCity2"
-              placeholder="Enter a city"
-              value={this.state.inputCity2}
-              onChange={this.handleChangeCity2}
-            />
-          </label>
-          <button onClick={this.findWeather}>
-            Find weather for both cities
-          </button>
-        </div>
-      );
-    }
+    return (
+      <div className="appWrap">
+        <h1 className="heading">
+          Compare weather in your city and anywhere else!
+        </h1>
+        <label className="inputLabel">
+          Enter first city name:
+          <input
+            type="text"
+            name="nameCity1"
+            placeholder="Enter a city"
+            value={this.state.inputCity1}
+            onChange={this.handleChangeCity1}
+          />
+        </label>
+        <label>
+          Enter second city name:
+          <input
+            type="text"
+            name="nameCity2"
+            placeholder="Enter a city"
+            value={this.state.inputCity2}
+            onChange={this.handleChangeCity2}
+          />
+        </label>
+        <button onClick={this.findWeather}>Find weather for both cities</button>
+        {this.state.inputCity1 !== "" &&
+        this.state.inputCity2 !== "" &&
+        this.state.showWeather ? (
+          <div>
+            <WeatherInfo city={this.state.inputCity1} />
+            <WeatherInfo city={this.state.inputCity2} />
+          </div>
+        ) : (
+          <div></div>
+        )}
+      </div>
+    );
   }
 }
