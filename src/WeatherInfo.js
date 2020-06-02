@@ -22,6 +22,10 @@ export default class WeatherInfo extends Component {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
+        if (data.cod === 200) {
+          const tempInfo = data.main.feels_like;
+          this.props.callBackFromParent(tempInfo);
+        }
         this.setState({
           dataFromApi: data,
         });
@@ -33,7 +37,11 @@ export default class WeatherInfo extends Component {
       this.state.dataFromApi !== undefined &&
       this.state.dataFromApi.cod !== 200
     ) {
-      return <div>{this.state.dataFromApi.message}. Selected city: {this.state.city}</div>;
+      return (
+        <div>
+          {this.state.dataFromApi.message}. Selected city: {this.state.city}
+        </div>
+      );
     } else if (this.state.dataFromApi === undefined) {
       return <div>Loading {this.state.city}...</div>;
     } else {

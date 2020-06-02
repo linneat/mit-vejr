@@ -29,4 +29,29 @@
 .inputLabel{
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  margin-bottom: 0.5%;
+}
+
+.inputWrap{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.button{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin:auto;
+  
+
+}
+
+.compareTemp{
+  display: flex;
+  justify-content: center;
+  margin: 2%;
+  font-size: 20px;
+
 }
