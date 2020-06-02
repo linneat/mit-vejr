@@ -59,35 +59,42 @@ export default class CompareTemp extends Component {
   render() {
     return (
       <div className="appWrap">
-      
+        <h1 className="heading">
+          Compare weather in your city and anywhere else!
+        </h1>
         <div className="inputWrap">
-        <label className="inputLabel">
-          Enter first city name:
-          <input
-            type="text"
-            name="nameCity1"
-            placeholder="Enter a city"
-            value={this.state.inputCity1}
-            onChange={this.handleChangeCity1}
-          />
-        </label>
-        <label className="inputLabel">
-          Enter second city name:
-          <input
-            type="text"
-            name="nameCity2"
-            placeholder="Enter a city"
-            value={this.state.inputCity2}
-            onChange={this.handleChangeCity2}
-          />
-        </label>
-        <button className="button" onClick={this.findWeather}>Find weather for both cities</button>
+          <label className="inputLabel">
+            Enter first city name:
+            <input
+              type="text"
+              name="nameCity1"
+              placeholder="Enter a city"
+              value={this.state.inputCity1}
+              onChange={this.handleChangeCity1}
+            />
+          </label>
+          <label className="inputLabel">
+            Enter second city name:
+            <input
+              type="text"
+              name="nameCity2"
+              placeholder="Enter a city"
+              value={this.state.inputCity2}
+              onChange={this.handleChangeCity2}
+            />
+          </label>
+          <button className="button" onClick={this.findWeather}>
+            Find weather for both cities
+          </button>
         </div>
         {this.state.inputCity1 !== "" &&
         this.state.inputCity2 !== "" &&
         this.state.showWeather ? (
           <div>
-            <div className="compareTemp">It is {this.tempDifference()} degrees higher in {this.highestTempCity()}</div>
+            <div className="compareTemp">
+              It is {this.tempDifference()} degrees higher in{" "}
+              {this.highestTempCity()}
+            </div>
             <WeatherInfo
               city={this.state.inputCity1}
               callBackFromParent={this.callBackTempChild1}
