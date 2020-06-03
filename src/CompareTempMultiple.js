@@ -1,4 +1,3 @@
-import WeatherInfo from "./WeatherInfo";
 import React, { Component } from "react";
 import FeelsLikeTemp from "./FeelsLikeTemp";
 
@@ -6,10 +5,20 @@ export default class CompareTempMultiple extends Component {
   constructor(props) {
     super(props);
 
+    let foo;
+    debugger;
+    if(props.inputCity1 === undefined || props.inputCity2 === undefined){
+        foo = "";
+    } else{
+        foo = props.inputCity1 + "," + props.inputCity2;
+    }
     this.state = {
       inputCities: [],
       showCompare: false,
-      inputCitiesString: "",
+      inputCitiesString: foo,
+      inputCity1: props.inputCity1,
+      inputCity2: props.inputCity2,
+
     };
     this.handleChangeCities = this.handleChangeCities.bind(this);
     this.compareTemperatures = this.compareTemperatures.bind(this);
@@ -24,12 +33,6 @@ export default class CompareTempMultiple extends Component {
     console.log(this.state.inputCitiesString);
     const cityArray = this.state.inputCitiesString.split(",");
     this.setState({ inputCities: cityArray, showCompare: true });
-    /*    
-    this.state.inputCities.map(city =>(
-        //go through string and seperate eact city
-        //go get the feels like temp from API: 
-        //const feels_like_temp = this.state.dataFromApi.main.feels_like_temp;
-    )) */
   }
 
   handleChangeCities(event) {
@@ -48,8 +51,7 @@ export default class CompareTempMultiple extends Component {
             Enter cities separeted by a comma:
             <input
               type="text"
-              name="nameCity1"
-              placeholder="Enter a city"
+              name="nameCities"
               value={this.state.inputCitiesString}
               onChange={this.handleChangeCities}
               placeholder="city1, city2"
@@ -64,15 +66,16 @@ export default class CompareTempMultiple extends Component {
             <div>
               <div>
                 {this.state.inputCities.map((city, index) => (
-                  <div>                  
-                    <FeelsLikeTemp city={city} callBackFromParent={this.callBackTemp}></FeelsLikeTemp>
+                  <div>
+                    <FeelsLikeTemp
+                      city={city}
+                      callBackFromParent={this.callBackTemp}
+                    ></FeelsLikeTemp>
                   </div>
                 ))}
               </div>
-           
             </div>
           ) : (
-            
             <div></div>
           )}
         </div>

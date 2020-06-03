@@ -14,7 +14,14 @@ export default class HomeRouting extends Component {
           <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/comparetemp" exact component={CompareTemp} />
+            <Route
+              path="/comparetempmultiple/:city1/:city2"
+              render={(props) => (
+                <CompareTempMultiple inputCity1={props.match.params.city1} inputCity2={props.match.params.city2}/>
+              )}
+            ></Route>
             <Route path="/comparetempmultiple" exact component={CompareTempMultiple}/>
+           
           </Switch>
         </Router>
       </div>

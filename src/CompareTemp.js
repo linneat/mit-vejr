@@ -1,5 +1,6 @@
 import WeatherInfo from "./WeatherInfo";
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class CompareTemp extends Component {
   constructor(props) {
@@ -87,6 +88,11 @@ export default class CompareTemp extends Component {
             Find weather for both cities
           </button>
         </div>
+        <Link to={"/comparetempmultiple/"+this.state.inputCity1+"/"+this.state.inputCity2} className="buttonHomePage">
+          <button  className="button">
+             Compare these 2 cities and more at the same time
+          </button>
+        </Link>
         {this.state.inputCity1 !== "" &&
         this.state.inputCity2 !== "" &&
         this.state.showWeather ? (
