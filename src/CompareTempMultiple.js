@@ -1,5 +1,6 @@
 import WeatherInfo from "./WeatherInfo";
 import React, { Component } from "react";
+import FeelsLikeTemp from "./FeelsLikeTemp";
 
 export default class CompareTempMultiple extends Component {
   constructor(props) {
@@ -63,12 +64,8 @@ export default class CompareTempMultiple extends Component {
             <div>
               <div>
                 {this.state.inputCities.map((city, index) => (
-                  <div>
-                
-                    <WeatherInfo
-                      city={city}
-                      callBackFromParent={this.callBackTemp}
-                    ></WeatherInfo>
+                  <div>                  
+                    <FeelsLikeTemp city={city} callBackFromParent={this.callBackTemp}></FeelsLikeTemp>
                   </div>
                 ))}
               </div>
