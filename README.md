@@ -1,3 +1,7 @@
+# Mit-vejr 
+
+This is a small React app that I created to practice concepts with minimal focus on UI and UX.
+
 How to start the app:
 set "REACT_APP_WEATHER_API_KEY=api_key" && npm start
 
