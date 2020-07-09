@@ -1,7 +1,24 @@
+body{
+  background-color: rgb(130, 200, 223);
+}
+
+.appWrap{
+  height: 100vh;
+}
+
+.homePageWrap{
+  margin-top: 10%;
+}
+
 .heading {
   display: flex;
   justify-content: center;
+  color: white;
+  background-color: rgb(130, 200, 223);
+  margin-bottom: 8%;
+  font-size: 3.5vw;
 }
+
 
 .buttonWrapper {
   display: flex;
@@ -9,9 +26,21 @@
 }
 
 .buttonHomePage {
-  margin: 1%;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
+.buttonClass{
+  border-radius: 10px;
+  border-style: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 3%;
+  padding-right: 3%;
+  background-color: rgb(115, 136, 211);
+  color: white;
+  width: 100%;
+}
 .info {
   display: flex;
   flex-direction: row;
