@@ -6,11 +6,11 @@ export default class CompareTempMultiple extends Component {
     super(props);
 
     let foo;
-    debugger;
-    if(props.inputCity1 === undefined || props.inputCity2 === undefined){
-        foo = "";
-    } else{
-        foo = props.inputCity1 + "," + props.inputCity2;
+
+    if (props.inputCity1 === undefined || props.inputCity2 === undefined) {
+      foo = "";
+    } else {
+      foo = props.inputCity1 + "," + props.inputCity2;
     }
     this.state = {
       inputCities: [],
@@ -18,7 +18,6 @@ export default class CompareTempMultiple extends Component {
       inputCitiesString: foo,
       inputCity1: props.inputCity1,
       inputCity2: props.inputCity2,
-
     };
     this.handleChangeCities = this.handleChangeCities.bind(this);
     this.compareTemperatures = this.compareTemperatures.bind(this);
@@ -45,39 +44,42 @@ export default class CompareTempMultiple extends Component {
   render() {
     return (
       <div className="appWrap">
-        <h2 className="heading">Compare temperatures in multiple cities</h2>
-        <div className="inputCitiesWrap">
-          <label className="inputLabel">
-            Enter cities separeted by a comma:
-            <input
-              type="text"
-              name="nameCities"
-              value={this.state.inputCitiesString}
-              onChange={this.handleChangeCities}
-              placeholder="city1, city2"
-            />
-          </label>
-          <button className="button" onClick={this.compareTemperatures}>
-            compare temperatures
-          </button>
-        </div>
-        <div className="showingAllCities">
-          {this.state.showCompare ? (
-            <div>
-              <div>
-                {this.state.inputCities.map((city, index) => (
-                  <div>
-                    <FeelsLikeTemp
-                      city={city}
-                      callBackFromParent={this.callBackTemp}
-                    ></FeelsLikeTemp>
-                  </div>
-                ))}
+        <div className="homePageWrap">
+          <h2 className="heading">Compare temperatures in multiple cities</h2>
+          <div className="wrapBoxColor">
+            <div className="inputCitiesWrap">
+              <label className="inputLabel">
+                Enter cities separeted by a comma:
+                <input
+                  type="text"
+                  name="nameCities"
+                  value={this.state.inputCitiesString}
+                  onChange={this.handleChangeCities}
+                  placeholder="city1, city2"
+                />
+              </label>
+              <div className="compareTempBut">
+                <button className="button" onClick={this.compareTemperatures}>
+                  compare temperatures
+                </button>
               </div>
             </div>
-          ) : (
-            <div></div>
-          )}
+            <div className="showingAllCities">
+              {this.state.showCompare ? (
+                <div>
+                  <div>
+                    {this.state.inputCities.map((city, index) => (
+                      <div>
+                        <FeelsLikeTemp city={city} callBackFromParent={this.callBackTemp}></FeelsLikeTemp>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div></div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     );

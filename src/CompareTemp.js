@@ -60,66 +60,61 @@ export default class CompareTemp extends Component {
   render() {
     return (
       <div className="appWrap">
-        <h1 className="heading">
-          Compare weather in your city and anywhere else!
-        </h1>
-        <div className="inputWrap">
-          <label className="inputLabel">
-            Enter first city name:
-            <input
-              type="text"
-              name="nameCity1"
-              placeholder="Enter a city"
-              value={this.state.inputCity1}
-              onChange={this.handleChangeCity1}
-            />
-          </label>
-          <label className="inputLabel">
-            Enter second city name:
-            <input
-              type="text"
-              name="nameCity2"
-              placeholder="Enter a city"
-              value={this.state.inputCity2}
-              onChange={this.handleChangeCity2}
-            />
-          </label>
-          <button className="button" onClick={this.findWeather}>
-            Find weather for both cities
-          </button>
-        </div>
-        <Link to={"/comparetempmultiple/"+this.state.inputCity1+"/"+this.state.inputCity2} className="buttonHomePage">
-          <button  className="button">
-             Compare these 2 cities and more at the same time
-          </button>
-        </Link>
-        {this.state.inputCity1 !== "" &&
-        this.state.inputCity2 !== "" &&
-        this.state.showWeather ? (
-          <div>
-            <div className="compareTemp">
-              It is {this.tempDifference()} degrees higher in{" "}
-              {this.highestTempCity()}
+        <div className="homePageWrap">
+          <h1 className="heading">Compare weather in two cities!</h1>
+          <div className="wrapBoxColor">
+          <div className="inputWrap">
+            <label className="inputLabel">
+              Enter first city name:
+              <input
+                type="text"
+                name="nameCity1"
+                placeholder="Enter a city"
+                value={this.state.inputCity1}
+                onChange={this.handleChangeCity1}
+              />
+            </label>
+            <label className="inputLabel">
+              Enter second city name:
+              <input
+                type="text"
+                name="nameCity2"
+                placeholder="Enter a city"
+                value={this.state.inputCity2}
+                onChange={this.handleChangeCity2}
+              />
+            </label>
             </div>
-            <WeatherInfo
-              city={this.state.inputCity1}
-              callBackFromParent={this.callBackTempChild1}
-            />
+            <div className="buttonWrap">
+            <button className="button" className="firstButton" onClick={this.findWeather}>
+              Find weather for both cities
+            </button>
+         
+          <Link
+            to={"/comparetempmultiple/" + this.state.inputCity1 + "/" + this.state.inputCity2}
+            className="buttonHomePage"
+          >
+            <button className="button">Compare these 2 cities and more at the same time</button>
+          </Link> </div>
+          {this.state.inputCity1 !== "" && this.state.inputCity2 !== "" && this.state.showWeather ? (
+            <div>
+              <div className="compareTemp">
+                It is {this.tempDifference()} degrees higher in {this.highestTempCity()}
+              </div>
+              <WeatherInfo city={this.state.inputCity1} callBackFromParent={this.callBackTempChild1} />
 
-            <WeatherInfo
-              city={this.state.inputCity2}
-              callBackFromParent={this.callBackTempChild2}
-            />
+              <WeatherInfo city={this.state.inputCity2} callBackFromParent={this.callBackTempChild2} />
+            </div>
+          ) : (
+            <div></div>
+          )}
+          {(this.state.inputCity1 === "" || this.state.inputCity2 === "") && this.state.showWeather ? (
+            <div>Please enter both cities</div>
+          ) : (
+            <div></div>
+          )}
           </div>
-        ) : (
-          <div></div>
-        )}
-        {(this.state.inputCity1 === "" || this.state.inputCity2 === "") &&
-        this.state.showWeather ? (
-          <div>Please enter both cities</div>
-        ) : (
-          <div></div>
-        )}
+        </div>
       </div>
     );
   }

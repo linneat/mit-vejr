@@ -1,12 +1,13 @@
-body{
+body {
   background-color: rgb(130, 200, 223);
+  font-family: Proxima Nova, sans-serif;
 }
 
-.appWrap{
+.appWrap {
   height: 100vh;
 }
 
-.homePageWrap{
+.homePageWrap {
   margin-top: 10%;
 }
 
@@ -19,7 +20,6 @@ body{
   font-size: 3.5vw;
 }
 
-
 .buttonWrapper {
   display: flex;
   justify-content: center;
@@ -30,17 +30,43 @@ body{
   margin-right: 2%;
 }
 
-.buttonClass{
+.buttonClass {
   border-radius: 10px;
   border-style: none;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 3%;
-  padding-right: 3%;
+  padding-top: 18px;
+  padding-bottom: 18px;
   background-color: rgb(115, 136, 211);
   color: white;
   width: 100%;
+  font-size: 100%;
 }
+
+button:hover {
+  color: rgb(40, 59, 110);
+  cursor: pointer;
+}
+
+.firstButton {
+  border-radius: 10px;
+  border-style: none;
+  background-color: rgb(115, 136, 211);
+  color: white;
+  font-size: 100%;
+  margin-bottom: 2%;
+  padding: 5px;
+}
+
+.buttonWrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 2%;
+
+}
+.inLineBold {
+  font-weight: 900;
+}
+
 .info {
   display: flex;
   flex-direction: row;
@@ -68,7 +94,17 @@ body{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 0.5%;
+  margin-bottom: 3%;
+}
+input {
+  border-radius: 5px;
+  border-style: none;
+  padding-left: 1%;
+  margin-left: 1%;
+  font-size: 85%;
+}
+.inputLabel::placeholder {
+  margin-right: 3%;
 }
 
 .inputWrap {
@@ -77,11 +113,27 @@ body{
   flex-direction: column;
 }
 
+.wrapBoxColor {
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 3%;
+  padding-top: 2%;
+  background-color: rgb(184, 215, 235);
+  border-radius: 5px;
+}
+
 .button {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin: auto;
+  border-radius: 10px;
+  border-style: none;
+  background-color: rgb(115, 136, 211);
+  color: white;
+  font-size: 100%;
+  margin-bottom: 2%;
+  padding: 5px;
+}
+
+a {
+  text-decoration: none;
 }
 
 .compareTemp {
@@ -89,4 +141,9 @@ body{
   justify-content: center;
   margin: 2%;
   font-size: 20px;
+}
+
+.compareTempBut{
+  display: flex;
+  justify-content: center;
 }

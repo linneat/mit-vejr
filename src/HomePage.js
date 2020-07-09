@@ -9,10 +9,10 @@ export default class HomePage extends Component {
           <h1 className="heading">Compare weather cities around the world</h1>
           <div className="buttonWrapper">
             <Link to={"/comparetemp"} className="buttonHomePage">
-              <button className="buttonClass">Compare weather from two cities</button>
+              <button className="buttonClass">Compare weather from <span className="inLineBold">two</span> cities</button>
             </Link>
             <Link to={"/comparetempmultiple"} className="buttonHomePage">
-              <button className="buttonClass">Compare weather from multiple cities</button>
+              <button className="buttonClass">Compare weather from <span className="inLineBold">multiple</span> cities</button>
             </Link>
           </div>
         </div>
