@@ -113,11 +113,22 @@ input {
   flex-direction: column;
 }
 
+.disabled-link {
+  pointer-events: none;
+  
+}
+
+.textCenter{
+  text-align: center;
+  color: rgb(49, 49, 49);
+}
+
 .wrapBoxColor {
   margin-left: 15%;
   margin-right: 15%;
   margin-top: 3%;
   padding-top: 2%;
+  padding-bottom: 4%;
   background-color: rgb(184, 215, 235);
   border-radius: 5px;
 }

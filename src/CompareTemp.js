@@ -57,62 +57,77 @@ export default class CompareTemp extends Component {
     }
   }
 
+  classForLink() {
+    if (this.state.inputCity1 === "" || this.state.inputCity2 === "") {
+      return "buttonHomePage disabled-link";
+    } else {
+      return "buttonHomePage";
+    }
+  }
+
+  printText() {
+    if (this.state.inputCity1 === "" || this.state.inputCity2 === "") {
+      return <div className="textCenter">Fill out input boxes</div>;
+    }
+  }
+
   render() {
     return (
       <div className="appWrap">
         <div className="homePageWrap">
           <h1 className="heading">Compare weather in two cities!</h1>
           <div className="wrapBoxColor">
-          <div className="inputWrap">
-            <label className="inputLabel">
-              Enter first city name:
-              <input
-                type="text"
-                name="nameCity1"
-                placeholder="Enter a city"
-                value={this.state.inputCity1}
-                onChange={this.handleChangeCity1}
-              />
-            </label>
-            <label className="inputLabel">
-              Enter second city name:
-              <input
-                type="text"
-                name="nameCity2"
-                placeholder="Enter a city"
-                value={this.state.inputCity2}
-                onChange={this.handleChangeCity2}
-              />
-            </label>
+            <div className="inputWrap">
+              <label className="inputLabel">
+                Enter first city name:
+                <input
+                  type="text"
+                  name="nameCity1"
+                  placeholder="Enter a city"
+                  value={this.state.inputCity1}
+                  onChange={this.handleChangeCity1}
+                />
+              </label>
+              <label className="inputLabel">
+                Enter second city name:
+                <input
+                  type="text"
+                  name="nameCity2"
+                  placeholder="Enter a city"
+                  value={this.state.inputCity2}
+                  onChange={this.handleChangeCity2}
+                />
+              </label>
             </div>
             <div className="buttonWrap">
-            <button className="button" className="firstButton" onClick={this.findWeather}>
-              Find weather for both cities
-            </button>
-         
-          <Link
-            to={"/comparetempmultiple/" + this.state.inputCity1 + "/" + this.state.inputCity2}
-            className="buttonHomePage"
-          >
-            <button className="button">Compare these 2 cities and more at the same time</button>
-          </Link> </div>
-          {this.state.inputCity1 !== "" && this.state.inputCity2 !== "" && this.state.showWeather ? (
-            <div>
-              <div className="compareTemp">
-                It is {this.tempDifference()} degrees higher in {this.highestTempCity()}
-              </div>
-              <WeatherInfo city={this.state.inputCity1} callBackFromParent={this.callBackTempChild1} />
-
-              <WeatherInfo city={this.state.inputCity2} callBackFromParent={this.callBackTempChild2} />
+              <button className="button firstButton" onClick={this.findWeather}>
+                Find weather for both cities
+              </button>
+              <Link
+                to={"/comparetempmultiple/" + this.state.inputCity1 + "/" + this.state.inputCity2}
+                className={this.classForLink()}
+              >
+                <button className="button">Compare these 2 cities and more at the same time</button>
+              </Link>{" "}
             </div>
-          ) : (
-            <div></div>
-          )}
-          {(this.state.inputCity1 === "" || this.state.inputCity2 === "") && this.state.showWeather ? (
-            <div>Please enter both cities</div>
-          ) : (
-            <div></div>
-          )}
+            {this.state.inputCity1 !== "" && this.state.inputCity2 !== "" && this.state.showWeather ? (
+              <div>
+                <div className="compareTemp">
+                  It is {this.tempDifference()} degrees higher in {this.highestTempCity()}
+                </div>
+                <WeatherInfo city={this.state.inputCity1} callBackFromParent={this.callBackTempChild1} />
+
+                <WeatherInfo city={this.state.inputCity2} callBackFromParent={this.callBackTempChild2} />
+              </div>
+            ) : (
+              <div></div>
+            )}
+            {(this.state.inputCity1 === "" || this.state.inputCity2 === "") && this.state.showWeather ? (
+              <div className="textCenter">Please enter both cities</div>
+            ) : (
+              <div></div>
+            )}
+            {this.printText()}
           </div>
         </div>
       </div>
